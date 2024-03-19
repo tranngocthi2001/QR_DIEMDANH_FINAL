@@ -3,6 +3,9 @@
 
 @section('content')
     <div class="container">
+    <div class="col-md-6">
+            <a href="{{ route('admin.users.index') }}" class="btn btn-primary">Quản lý người dùng</a>
+        </div>
         <h1>Danh sách sự kiện</h1>
         <a href="{{ route('admin.events.create') }}" class="btn btn-primary">Thêm Event Mới</a>
 

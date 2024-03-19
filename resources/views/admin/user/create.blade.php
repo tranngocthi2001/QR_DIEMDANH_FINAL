@@ -2,6 +2,9 @@
 
 @section('content')
 <div class="container">
+<div class="col-md-6">
+            <a href="{{ route('admin.event.index') }}" class="btn btn-success">Quản lý event</a>
+        </div>
     <h2>Thêm người dùng mới</h2>
 
     {{-- Hiển thị thông báo lỗi nếu có --}}

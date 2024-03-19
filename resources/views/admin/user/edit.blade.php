@@ -1,6 +1,9 @@
 @extends('layouts.app')
 
 @section('content')
+<div class="col-md-6">
+            <a href="{{ route('admin.event.index') }}" class="btn btn-success">Quản lý event</a>
+        </div>
 <div class="container">
     <h2>Chỉnh sửa thông tin người dùng</h2>
 
