@@ -2,7 +2,14 @@
 
 use App\Http\Controllers\QRController;
 use Illuminate\Support\Facades\Route;
-
+//use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\Admin\UserController;
+use App\Http\Controllers\Admin\EventController;
+use App\Http\Controllers\ScanQRController;
+//use App\Http\Controllers\ScanQRController;
+use App\Http\Controllers\AuthController;
+use App\Http\Controllers\Auth\RegisteredUserController;
+use App\Http\Controllers\Auth\PasswordResetLinkController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -27,8 +34,6 @@ Route::get('/admin/dashboard', function () {
     //
 })->middleware('role:admin');
 
-use App\Http\Controllers\AuthController;
-
 // Hiển thị form đăng nhập
 Route::get('/login', [AuthController::class, 'showLoginForm'])->name('login')->middleware('guest');
 
@@ -37,6 +42,23 @@ Route::post('/login', [AuthController::class, 'login']);
 
 // Đăng xuất
 Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
+
+Route::get('/register', [RegisteredUserController::class, 'create'])->name('register')->middleware('guest');
+
+// Xử lý thông tin đăng ký
+Route::post('/register', [RegisteredUserController::class, 'register']);
+
+// Đăng xuất (Giữ nguyên)
+Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
+
+Route::get('/forgot-password', [PasswordResetLinkController::class, 'create'])
+     ->middleware('guest')
+     ->name('password.request');
+
+// Xử lý yêu cầu đặt lại mật khẩu
+Route::post('/forgot-password', [PasswordResetLinkController::class, 'store'])
+     ->middleware('guest')
+     ->name('password.email');
 
 // Route cho admin dashboard
 Route::middleware(['auth', 'role:admin'])->group(function () {
@@ -49,20 +71,6 @@ Route::middleware(['auth', 'role:user'])->group(function () {
         // Logic cho trang dashboard của 
     });
 });
-
-// Route cho user dashboard
-// Route::middleware(['auth', 'role:user'])->group(function () {
-//     Route::get('/user/dashboard', function () {
-//         // Logic cho trang dashboard của user
-//     });
-// });
-
-//use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\Admin\UserController;
-use App\Http\Controllers\Admin\EventController;
-use App\Http\Controllers\ScanQRController;
-//use App\Http\Controllers\ScanQRController;
-
 // Thay thế 'yourMethod' bằng tên phương thức thực tế bạn sử dụng
 Route::post('/scan-qr', [ScanQRController::class, 'processQRScan'])->name('scan-qr.process');
 // Trong file routes/web.php
