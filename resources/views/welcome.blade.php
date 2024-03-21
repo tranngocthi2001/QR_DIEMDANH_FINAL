@@ -9,7 +9,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>Quét mã QR Trang quản trị</title>
+    <title>Quét mã QR Trang chủ</title>
 
     <!-- Custom fonts for this template-->
     <link href="{{ asset('resource/vendor/fontawesome-free/css/all.min.css') }}" rel="stylesheet">
@@ -35,7 +35,7 @@
                 <div class="sidebar-brand-icon rotate-n-15">
                     <i class="fas fa-laugh-wink"></i>
                 </div>
-                <div class="sidebar-brand-text mx-3">Trang quản trị <sup></sup></div>
+                <div class="sidebar-brand-text mx-3">Trang chủ <sup></sup></div>
             </a>
 
             <!-- Divider -->
@@ -240,7 +240,8 @@
                     <div class="row">
 
                         <!-- Earnings (Monthly) Card Example -->
-                        <
+                        <a class="collapse-item" href="{{ route('login') }}">Đăng nhập</a></br>
+                        <a class="collapse-item" href="{{ route('register') }}">Đăng ký</a>
 
                         <!-- Earnings (Monthly) Card Example -->
                         
@@ -339,7 +340,7 @@
                 <div class="modal-body">Select "Logout" below if you are ready to end your current session.</div>
                 <div class="modal-footer">
                     <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
-                    <a class="btn btn-primary" href="login.html">Logout</a>
+                    <a class="btn btn-primary" href="{{ route('login') }}">Logout</a>
                 </div>
             </div>
         </div>
