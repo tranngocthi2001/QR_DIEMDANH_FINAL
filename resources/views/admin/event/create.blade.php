@@ -233,7 +233,7 @@
             @csrf
             <!---------------------------------------------------->
             <div class="container">
-    <h2>Thêm Event Mới</h2>
+    <h2>Thêm Event Mới </h2>
 
     <form action="{{ route('admin.events.store') }}" method="POST">
         @csrf
@@ -390,8 +390,3 @@
 
 
 
-@extends('layouts.app')
-
-@section('content')
-
-@endsection
