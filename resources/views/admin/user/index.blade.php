@@ -233,7 +233,7 @@
             @csrf
             <!---------------------------------------------------->
             <div class="col-md-6">
-            <a href="{{ route('admin.event.index') }}" class="btn btn-success">Quản lý event</a>
+            
         </div>
 <h1>Danh sách người dùng</h1></br>
 <a href="{{ route('admin.users.create') }}" class="btn btn-success mb-2">Thêm mới</a>
