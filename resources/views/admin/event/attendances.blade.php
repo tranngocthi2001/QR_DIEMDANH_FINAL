@@ -31,7 +31,7 @@
         <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
 
             <!-- Sidebar - Brand -->
-            <a class="sidebar-brand d-flex align-items-center justify-content-center" href="index.html">
+            <a class="sidebar-brand d-flex align-items-center justify-content-center" >
                 <div class="sidebar-brand-icon rotate-n-15">
                     <i class="fas fa-laugh-wink"></i>
                 </div>
@@ -43,7 +43,7 @@
 
             <!-- Nav Item - Dashboard -->
             <li class="nav-item active">
-                <a class="nav-link" href="index.html">
+                <a class="nav-link" >
                     <i class="fas fa-fw fa-tachometer-alt"></i>
                     <span>Hệ thống quét mã QR</span></a>
             </li>
@@ -66,7 +66,7 @@
                 <div id="collapsePages" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
                         <h6 class="collapse-header">Quản lý:</h6>
-                        <a class="collapse-item" href="{{ route('admin.users.index') }}" class="btn btn-primary">Quản lý người dùng</href=></a>
+                        <a class="collapse-item" href="{{ route('admin.users.index') }}" class="btn btn-primary">Quản lý người dùng</href=></a></br>
                         <a class="collapse-item" href="{{ route('admin.event.index') }}" class="btn btn-success">Quản lý event</>
                         
                         
