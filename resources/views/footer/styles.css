@@ -1,0 +1,15 @@
+html, body {
+    height: 100%;
+    margin: 0;
+}
+
+.content {
+    min-height: calc(100% - 100px); /* Điều chỉnh 100px nếu bạn có các phần tử khác trên trang cần được tính vào */
+    /* Nội dung chính của trang sẽ chiếm phần còn lại của chiều cao của màn hình */
+}
+
+footer {
+    height: 100px; /* Điều chỉnh độ cao của footer tại đây */
+    background-color: #333; /* Màu nền của footer */
+    color: #fff; /* Màu văn bản của footer */
+}

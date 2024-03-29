@@ -12,7 +12,7 @@
     <title>Quét mã QR Trang chủ</title>
 
     <!-- Custom fonts for this template-->
-    <link href="{{ asset('resource/vendor/fontawesome-free/css/all.min.css') }}" rel="stylesheet">
+
     <link
         href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i"
         rel="stylesheet">
@@ -31,7 +31,7 @@
         <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
 
             <!-- Sidebar - Brand -->
-            <a class="sidebar-brand d-flex align-items-center justify-content-center" href="index.html">
+            <a class="sidebar-brand d-flex align-items-center justify-content-center" >
                 <div class="sidebar-brand-icon rotate-n-15">
                     <i class="fas fa-laugh-wink"></i>
                 </div>
@@ -43,7 +43,7 @@
 
             <!-- Nav Item - Dashboard -->
             <li class="nav-item active">
-                <a class="nav-link" href="index.html">
+                <a class="nav-link" >
                     <i class="fas fa-fw fa-tachometer-alt"></i>
                     <span>Hệ thống quét mã QR</span></a>
             </li>
@@ -174,7 +174,6 @@
                                 </form>
                             </div>
                         </li>
-
                         <!-- Nav Item - Alerts -->
                         <li class="nav-item dropdown no-arrow mx-1">
                             <a class="nav-link dropdown-toggle" href="#" id="alertsDropdown" role="button"
@@ -184,9 +183,7 @@
                                 <span class="badge badge-danger badge-counter"></span>
                             </a>
                             <!-- Dropdown - Alerts -->
-                            
                         </li>
-
                         <!-- Nav Item - Messages -->
                         <li class="nav-item dropdown no-arrow mx-1">
                             <a class="nav-link dropdown-toggle" href="#" id="messagesDropdown" role="button"
@@ -196,11 +193,8 @@
                                 <span class="badge badge-danger badge-counter"></span>
                             </a>
                             <!-- Dropdown - Messages -->
-                            
                         </li>
-
                         <div class="topbar-divider d-none d-sm-block"></div>
-
                         <!-- Nav Item - User Information -->
                         <li class="nav-item dropdown no-arrow">
                             <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button"
@@ -216,7 +210,6 @@
                                     <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
                                     Thông tin
                                 </a>
-                                
                                 <div class="dropdown-divider"></div>
                                 <a class="dropdown-item" href="#" data-toggle="modal" data-target="#logoutModal">
                                     <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
@@ -229,51 +222,46 @@
 
                 </nav>
                 <!-- End of Topbar -->
-
             @csrf
             <!---------------------------------------------------->
             </div>
-        <h1>Danh sách sự kiện</h1>
-        <a href="{{ route('admin.events.create') }}" class="btn btn-primary">Thêm Event Mới</a>
+                    <h1>Danh sách sự kiện</h1>
+                    <a href="{{ route('admin.events.create') }}" class="btn btn-primary">Thêm Event Mới</a>
 
-        <table class="table">
-            <thead>
-                <tr>
-                    <th>ID</th>
-                    <th>Tên sự kiện</th>
-                    
-                    <th>Giờ bắt đầu</th>
-                    <th>Giờ kết thúc</th>
-                    <th>Địa điểm</th>
-                </tr>
-            </thead>
-            <tbody>
-                @foreach ($events as $event)
-                    <tr>
-                        <td>{{ $event->id }}</td>
-                        <td>{{ $event->name }}</td>
-                        <td>{{ $event->start_time }}</td>
-                        <td>{{ $event->end_time }}</td>
-                        <td>{{ $event->location }}</td>
-                        <td>
-                            <a href="{{ route('admin.events.edit', $event) }}" class="btn btn-primary">Sửa</a>
-                            <form action="{{ route('admin.events.destroy', $event) }}" method="POST" style="display:inline;">
-                                @csrf
-                                @method('DELETE')
-                                <button type="submit" class="btn btn-danger" onclick="return confirm('Bạn có chắc chắn muốn xóa sự kiện này?')">Xóa</button>
-                            </form>
-                            <!-- Ví dụ với tham số query -->
-                            <a href="{{ route('admin.events.scanQR', ['event_id' => $event->id]) }}" class="btn btn-info">Quét QR</a>
-                            <a href="{{ route('admin.events.attendances', ['event_id' => $event->id]) }}" class="btn btn-info">Danh sách điểm danh</a>
-
-
-
-                        </td>
-                    </tr>
-                @endforeach
-            </tbody>
-        </table>
-    </div>
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th>ID</th>
+                                <th>Tên sự kiện</th>
+                                <th>Giờ bắt đầu</th>
+                                <th>Giờ kết thúc</th>
+                                <th>Địa điểm</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach ($events as $event)
+                                <tr>
+                                    <td>{{ $event->id }}</td>
+                                    <td>{{ $event->name }}</td>
+                                    <td>{{ $event->start_time }}</td>
+                                    <td>{{ $event->end_time }}</td>
+                                    <td>{{ $event->location }}</td>
+                                    <td>
+                                        <a href="{{ route('admin.events.edit', $event) }}" class="btn btn-primary">Sửa</a>
+                                        <form action="{{ route('admin.events.destroy', $event) }}" method="POST" style="display:inline;">
+                                            @csrf
+                                            @method('DELETE')
+                                            <button type="submit" class="btn btn-danger" onclick="return confirm('Bạn có chắc chắn muốn xóa sự kiện này?')">Xóa</button>
+                                        </form>
+                                        <!-- Ví dụ với tham số query -->
+                                        <a href="{{ route('admin.events.scanQR', ['event_id' => $event->id]) }}" class="btn btn-info">Quét QR</a>
+                                        <a href="{{ route('admin.events.attendances', ['event_id' => $event->id]) }}" class="btn btn-info">Danh sách điểm danh</a>
+                                    </td>
+                                </tr>
+                            @endforeach
+                        </tbody>
+                    </table>
+            </div>
 
                         <!-- Earnings (Monthly) Card Example -->
                         
@@ -313,8 +301,7 @@
                             
 
                             <!-- Color System -->
-                            
-
+                        
                         </div>
 
                         <div class="col-lg-6 mb-4">
@@ -338,7 +325,7 @@
             <footer class="sticky-footer bg-white">
                 <div class="container my-auto">
                     <div class="copyright text-center my-auto">
-                        <span>Copyright &copy; Your Website 2021</span>
+                    @include('footer.footer')
                     </div>
                 </div>
             </footer>
@@ -385,12 +372,7 @@
 <!-- Custom scripts for all pages -->
 <script src="{{ asset('js/sb-admin-2.min.js') }}"></script>
 
-<!-- Page level plugins -->
-<script src="{{ asset('vendor/chart.js/Chart.min.js') }}"></script>
 
-<!-- Page level custom scripts -->
-<script src="{{ asset('js/demo/chart-area-demo.js') }}"></script>
-<script src="{{ asset('js/demo/chart-pie-demo.js') }}"></script>
 
 </body>
 

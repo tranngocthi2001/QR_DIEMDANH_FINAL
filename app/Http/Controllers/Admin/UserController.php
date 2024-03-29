@@ -29,7 +29,7 @@ class UserController extends Controller
 public function store(Request $request)
 {
     // Validate input
-    $request->validate([
+    $validated = $request->validate([
         'name' => 'required',
         'email' => 'required|email|unique:users,email',
         'password' => 'required|min:6',
@@ -37,17 +37,17 @@ public function store(Request $request)
     ]);
 
     // Create new user
-    $user = new User();
-    $user->name = $request->name;
-    $user->email = $request->email;
-    $user->password = bcrypt($request->password);
-    $user->role = $request->role; // Cập nhật role từ form
-
-    $user->save();
+    $user = User::create([
+        'name' => $validated['name'],
+        'email' => $validated['email'],
+        'password' => Hash::make($validated['password']), // Hash mật khẩu
+        'role' => $validated['role'], // Cập nhật role từ form
+    ]);
 
     // Redirect back with success message
-    return redirect()->route('admin.user.index')->with('success', 'User created successfully');
+    return back()->with('success', 'Tài khoản đã được tạo thành công!');
 }
+
 
     // Hiển thị form chỉnh sửa người dùng
     public function edit(User $user)
@@ -57,23 +57,29 @@ public function store(Request $request)
 
     // Cập nhật người dùng
     public function update(Request $request, User $user)
-    {
-        $validated = $request->validate([
-            'name' => 'required|max:255',
-            'email' => 'required|email|max:255|unique:users,email,' . $user->id,
-            'password' => 'sometimes|min:6',
-            'role' => 'required',
-        ]);
+{
+    $validated = $request->validate([
+        'name' => 'required|max:255',
+        'email' => 'required|email|max:255|unique:users,email,' . $user->id,
+        'password' => 'nullable|min:6',
+        'role' => 'required',
+    ]);
 
-        $user->update([
-            'name' => $validated['name'],
-            'email' => $validated['email'],
-            'password' => isset($validated['password']) ? Hash::make($validated['password']) : $user->password,
-            'role' => $validated['role'],
-        ]);
+    // Cập nhật thông tin người dùng
+    $user->name = $validated['name'];
+    $user->email = $validated['email'];
+    $user->role = $validated['role'];
 
-        return redirect()->route('admin.users.index')->with('success', 'Người dùng đã được cập nhật.');
+    // Nếu mật khẩu được cung cấp, cập nhật mật khẩu
+    if (!empty($validated['password'])) {
+        $user->password = Hash::make($validated['password']);
     }
+
+    $user->save();
+
+    return redirect()->route('admin.users.index')->with('success', 'Người dùng đã được cập nhật.');
+}
+
 
     // Xóa người dùng
     public function destroy(User $user)

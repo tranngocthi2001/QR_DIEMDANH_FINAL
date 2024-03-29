@@ -22,7 +22,26 @@ class RegisteredUserController extends Controller
     {
         return view('auth.register');
     }
+    public function register(Request $request)
+    {
+        // Xác thực dữ liệu đăng ký của người dùng
+        $validatedData = $request->validate([
+            'name' => ['required', 'string', 'max:255'],
+            'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
+            'password' => ['required', 'string', 'min:8', 'confirmed'],
+        ]);
 
+        // Tạo người dùng mới
+        $user = \App\Models\User::create([
+            'name' => $validatedData['name'],
+            'email' => $validatedData['email'],
+            'password' => \Hash::make($validatedData['password']),
+        ]);
+
+        // Giả sử bạn đã định nghĩa route 'login' cho trang đăng nhập
+        // Chuyển hướng người dùng đến trang đăng nhập sau khi đăng ký thành công
+        return redirect()->route('login')->with('success', 'Tài khoản của bạn đã được tạo thành công! Vui lòng đăng nhập.');
+    }
     /**
      * Handle an incoming registration request.
      *
