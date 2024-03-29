@@ -31,7 +31,11 @@
         <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
 
             <!-- Sidebar - Brand -->
+<<<<<<< HEAD
             <a class="sidebar-brand d-flex align-items-center justify-content-center" >
+=======
+            <a class="sidebar-brand d-flex align-items-center justify-content-center">
+>>>>>>> 1df83767ec698c3adf6550e0f987c1c333f17dc0
                 <div class="sidebar-brand-icon rotate-n-15">
                     <i class="fas fa-laugh-wink"></i>
                 </div>
@@ -43,7 +47,11 @@
 
             <!-- Nav Item - Dashboard -->
             <li class="nav-item active">
+<<<<<<< HEAD
                 <a class="nav-link">
+=======
+                <a class="nav-link" >
+>>>>>>> 1df83767ec698c3adf6550e0f987c1c333f17dc0
                     <i class="fas fa-fw fa-tachometer-alt"></i>
                     <span>Hệ thống quét mã QR</span></a>
             </li>

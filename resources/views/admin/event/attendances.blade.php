@@ -66,7 +66,7 @@
                 <div id="collapsePages" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
                         <h6 class="collapse-header">Quản lý:</h6>
-                        <a class="collapse-item" href="{{ route('admin.users.index') }}" class="btn btn-primary">Quản lý người dùng</href=></a>
+                        <a class="collapse-item" href="{{ route('admin.users.index') }}" class="btn btn-primary">Quản lý người dùng</href=></a></br>
                         <a class="collapse-item" href="{{ route('admin.event.index') }}" class="btn btn-success">Quản lý event</>
                         
                         
@@ -378,8 +378,3 @@
 
 
 
-@extends('layouts.app')
-
-@section('content')
-    
-@endsection
