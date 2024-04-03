@@ -1,0 +1,7 @@
+#qr-canvas {
+    width: 256px;
+    height: 256px;
+    border: 1px solid #ccc;
+    /* Các thuộc tính CSS khác tùy thuộc vào yêu cầu của bạn */
+    background-color: white; /* hoặc màu nền khác mà bạn muốn */
+}

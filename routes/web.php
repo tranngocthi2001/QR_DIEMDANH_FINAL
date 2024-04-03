@@ -41,7 +41,9 @@ Route::middleware(['auth', 'role:user'])->group(function () {
         return view('user.dashboard');
     });
     Route::get('/user/usershowQR', [UserController::class, 'usershowQR'])->name('user.usershowQR');
+    Route::get('/user/show-qr', [UserController::class, 'showQR'])->name('user.showqr');
 });
+
 // Giả sử bạn đã có middleware 'admin' để kiểm tra người dùng có phải là admin không
 
 Route::prefix('admin')->middleware(['auth', 'admin'])->group(function () {
@@ -68,6 +70,12 @@ Route::prefix('admin')->middleware(['auth', 'admin'])->group(function () {
         Route::delete('/event/{event}', [EventController::class, 'destroy'])->name('admin.events.destroy');
         Route::put('/events/{event}', [EventController::class, 'update'])->name('admin.events.update');
         Route::post('/admin/events/scanQR/{event_id}', [EventController::class, 'scanQR'])->name('admin.events.scanQR.post');
+        //--
+        Route::get('/attendances/{id}/edit', [EventController::class, 'editAttendance'])->name('attendances.edit');
+        Route::put('/attendances/{id}', [EventController::class, 'updateAttendance'])->name('attendances.update');
+        Route::get('/admin/attendances/{event_id}', [EventController::class, 'showAttendances'])->name('attendances.show');
+        Route::delete('/attendances/{id}', [EventController::class, 'deleteAttendance'])->name('attendances.delete');
+
         //---------------------------------------
         // Hiển thị trang quét QR cho sự kiện cụ thể
         Route::get('/admin/events/{event_id}/scan-qr', [App\Http\Controllers\ScanQRController::class, 'showScanQRPage'])->name('admin.events.scanQR');

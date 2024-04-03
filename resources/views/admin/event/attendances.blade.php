@@ -250,6 +250,19 @@
                         <td>{{ $attendance->user->name }}</td>
                         <td>{{ $attendance->user->email }}</td>
                         <td>{{ $attendance->created_at }}</td>
+                        <td> <!-- Button cho việc chỉnh sửa -->
+                            <form action="{{ route('attendances.edit', ['id' => $attendance->id]) }}" method="GET">
+                                @csrf
+                                <button type="submit">Chỉnh sửa</button>
+                            </form>
+
+                            <!-- Button cho việc xóa -->
+                            <form action="{{ route('attendances.delete', ['id' => $attendance->id]) }}" method="POST">
+                                @csrf
+                                @method('DELETE')
+                                <button type="submit">Xóa</button>
+                            </form>
+                        </td>
                     </tr>
                 @endforeach
             </tbody>

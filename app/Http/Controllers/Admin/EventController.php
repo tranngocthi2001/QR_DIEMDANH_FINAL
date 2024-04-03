@@ -137,4 +137,35 @@ public function processQR(Request $request)
 
         return view('admin.event.attendances', compact('event', 'attendances'));
     }
+    public function editAttendance($id)
+{
+    $attendance = Attendance::findOrFail($id);
+    // Lấy dữ liệu cần thiết khác nếu cần
+    return view('admin.event.edit_attendance', compact('attendance'));
+}
+
+public function updateAttendance(Request $request, $id)
+{
+    $attendance = Attendance::findOrFail($id);
+
+    // Loại bỏ trường '_token' khỏi dữ liệu request trước khi cập nhật
+    $data = $request->except('_token');
+
+    // Cập nhật dữ liệu từ request
+    $attendance->update($data);
+
+    // Chuyển hướng về trang hiển thị danh sách hoặc trang khác nếu cần
+    return redirect()->route('attendances.show', ['event_id' => $attendance->event_id]);
+}
+
+
+public function deleteAttendance($id)
+{
+    $attendance = Attendance::findOrFail($id);
+    $event_id = $attendance->event_id;
+    $attendance->delete();
+
+    return redirect()->back(); // Chuyển hướng quay lại trang trước đó  
+}
+
 }

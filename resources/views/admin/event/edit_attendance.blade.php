@@ -31,11 +31,7 @@
         <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
 
             <!-- Sidebar - Brand -->
-
             <a class="sidebar-brand d-flex align-items-center justify-content-center" >
-
-            <a class="sidebar-brand d-flex align-items-center justify-content-center">
-
                 <div class="sidebar-brand-icon rotate-n-15">
                     <i class="fas fa-laugh-wink"></i>
                 </div>
@@ -47,11 +43,7 @@
 
             <!-- Nav Item - Dashboard -->
             <li class="nav-item active">
-
-                <a class="nav-link">
-
                 <a class="nav-link" >
-
                     <i class="fas fa-fw fa-tachometer-alt"></i>
                     <span>Hệ thống quét mã QR</span></a>
             </li>
@@ -74,7 +66,7 @@
                 <div id="collapsePages" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
                         <h6 class="collapse-header">Quản lý:</h6>
-                        <a class="collapse-item" href="{{ route('admin.users.index') }}" class="btn btn-primary">Quản lý người dùng</href=></a>
+                        <a class="collapse-item" href="{{ route('admin.users.index') }}" class="btn btn-primary">Quản lý người dùng</href=></a></br>
                         <a class="collapse-item" href="{{ route('admin.event.index') }}" class="btn btn-success">Quản lý event</>
                         
                         
@@ -240,15 +232,19 @@
 
             @csrf
             <!---------------------------------------------------->
-            <h3>Danh mục</h3>
-            <div class="row">
-        <div class="col-md-6">
-            <a href="{{ route('admin.users.index') }}" class="btn btn-primary">Quản lý người dùng</a>
-        </div>
-        <div class="col-md-6">
-            <a href="{{ route('admin.event.index') }}" class="btn btn-success">Quản lý event</a>
-        </div>
-    </div>
+            <form action="{{ route('attendances.update', ['id' => $attendance->id]) }}" method="POST">
+                @csrf
+                @method('PUT') {{-- Sử dụng phương thức PUT để cập nhật dữ liệu --}}
+                <!-- Các trường dữ liệu bạn muốn cho phép chỉnh sửa -->
+                <label for="time_scanned">Thời gian quét:</label>
+                <input type="text" id="time_scanned" name="time_scanned" value="{{ $attendance->time_scanned }}" required>
+
+                <!-- Các trường khác bạn muốn chỉnh sửa -->
+
+                <button type="submit">Lưu thay đổi</button>
+            </form>
+
+    
 
                         <!-- Earnings (Monthly) Card Example -->
                         
@@ -361,10 +357,14 @@
 <script src="{{ asset('js/sb-admin-2.min.js') }}"></script>
 
 
-
 </body>
 
 </html>
+
+
+
+
+
 
 
 

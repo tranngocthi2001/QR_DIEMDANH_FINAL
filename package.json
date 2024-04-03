@@ -21,6 +21,11 @@
         "vite": "^5.2.2"
     },
     "dependencies": {
-        "bootstrap": "^5.3.3"
+        "bootstrap": "^5.3.3",
+        "html2canvas": "^1.4.1",
+        "qr-code-styling": "^1.6.0-rc.1",
+        "qrcode": "^1.5.3",
+        "qrcode-generator": "^1.4.4",
+        "qrcode-with-logos": "^1.0.5"
     }
 }

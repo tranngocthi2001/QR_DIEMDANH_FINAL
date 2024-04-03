@@ -26,9 +26,6 @@ public function usershowQR() {
     // Trả về view với dữ liệu người dùng, đảm bảo bạn có file view tương ứng
     return view('user.userShowQR', compact('user'));
 }
-// public function usershowQR() {
-//     // Logic để hiển thị mã QR code
-//     return view('user.userShowQR'); // Trả về view để hiển thị mã QR code
-// }
+
 
 }

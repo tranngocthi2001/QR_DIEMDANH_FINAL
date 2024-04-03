@@ -11,5 +11,12 @@ class Attendance extends Model
     {
         return $this->belongsTo(User::class);
     }
+    protected $fillable = [
+        'user_id',
+        'event_id',
+        'time_scanned',
+        //Thêm '_token' vào đây
+        
+    ];
     use HasFactory;
 }

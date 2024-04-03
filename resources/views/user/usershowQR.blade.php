@@ -1,25 +1,45 @@
+<!-- qr-code.blade.php -->
+
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-    <title>Show QR</title>
-    
-    <script src="https://cdn.jsdelivr.net/npm/qrcodejs/qrcode.min.js"></script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>QR Code</title>
+    <script src="{{ asset('js/qr-code-styling.js') }}"></script>
 
 </head>
 <body>
-<div id="qrcode"></div>
+    <div id="qr-code"></div>
 
-<script type="text/javascript">
-    var qrData = @json($qrData); // Chú ý cách bạn truyền dữ liệu từ Laravel sang JavaScript
-    var qrcode = new QRCode(document.getElementById("qrcode"), {
-        text: qrData,
-        width: 128,
-        height: 128,
-        colorDark : "#000000",
-        colorLight : "#ffffff",
-        correctLevel : QRCode.CorrectLevel.H
-    });
+    <script>
+    // Đặt mã JavaScript trong hàm để đảm bảo nó được thực thi sau khi trang đã tải xong
+    function initQRCode() {
+        var qrData = @json($qrData); // Chú ý cách bạn truyền dữ liệu từ Laravel sang JavaScript
+
+        // Khởi tạo đối tượng QRCodeStyling
+        const qrCode = new QRCodeStyling({
+            width: 300,
+            height: 300,
+            data: qrData, // Sử dụng dữ liệu từ biến qrData
+            image: '{{ asset('img/th.jpg') }}', // Đường dẫn của hình ảnh bạn muốn chèn
+            dotsOptions: {
+                color: '#FF00FF', // Màu của các chấm trong mã QR
+            },
+            cornersSquareOptions: {
+                color: '#0000FF', // Màu của các góc vuông
+            },
+        });
+
+        // Render mã QR và hiển thị trên một phần tử HTML
+        qrCode.append(document.getElementById('qr-code'));
+    }
+
+    // Gọi hàm initQRCode sau khi trang đã tải xong
+    window.onload = function() {
+        initQRCode();
+    };
 </script>
-dàdsfdsfsda
+
 </body>
 </html>
